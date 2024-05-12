@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CourseProject.Models
 {
-    internal class City
+    public class City
     {
+        public string Name { get; set; }
+        public Country Country { get; set; }
+        public int Population { get; set; }
+        public double[] Coordinates { get; set; } = new double[2];
     }
 }

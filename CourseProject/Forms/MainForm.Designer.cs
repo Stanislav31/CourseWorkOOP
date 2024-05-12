@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             splitContainer1 = new SplitContainer();
-            countryBox = new ListBox();
+            countryView = new TreeView();
             splitContainer2 = new SplitContainer();
             searchButton = new Button();
             continentBox = new TextBox();
@@ -50,6 +51,8 @@
             label1 = new Label();
             label10 = new Label();
             searchResultBox = new ListBox();
+            countryBindingSource1 = new BindingSource(components);
+            countryBindingSource = new BindingSource(components);
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             создатьToolStripMenuItem = new ToolStripMenuItem();
@@ -80,7 +83,6 @@
             поискToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator5 = new ToolStripSeparator();
             опрограммеToolStripMenuItem = new ToolStripMenuItem();
-            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -89,6 +91,8 @@
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)countryBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)countryBindingSource).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,8 +106,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(label11);
-            splitContainer1.Panel1.Controls.Add(countryBox);
+            splitContainer1.Panel1.Controls.Add(countryView);
             // 
             // splitContainer1.Panel2
             // 
@@ -112,16 +115,13 @@
             splitContainer1.SplitterDistance = 300;
             splitContainer1.TabIndex = 0;
             // 
-            // countryBox
+            // countryView
             // 
-            countryBox.Dock = DockStyle.Fill;
-            countryBox.Font = new Font("Segoe UI", 12F);
-            countryBox.FormattingEnabled = true;
-            countryBox.ItemHeight = 21;
-            countryBox.Location = new Point(0, 0);
-            countryBox.Name = "countryBox";
-            countryBox.Size = new Size(298, 535);
-            countryBox.TabIndex = 0;
+            countryView.Dock = DockStyle.Fill;
+            countryView.Location = new Point(0, 0);
+            countryView.Name = "countryView";
+            countryView.Size = new Size(298, 535);
+            countryView.TabIndex = 2;
             // 
             // splitContainer2
             // 
@@ -166,6 +166,7 @@
             searchButton.TabIndex = 36;
             searchButton.Text = "Знайти";
             searchButton.UseVisualStyleBackColor = true;
+            searchButton.Click += searchButton_Click;
             // 
             // continentBox
             // 
@@ -175,6 +176,7 @@
             continentBox.Name = "continentBox";
             continentBox.Size = new Size(157, 29);
             continentBox.TabIndex = 35;
+            continentBox.Validating += continentBox_Validating;
             // 
             // label4
             // 
@@ -215,6 +217,7 @@
             populationBoxMax.Name = "populationBoxMax";
             populationBoxMax.Size = new Size(157, 29);
             populationBoxMax.TabIndex = 31;
+            populationBoxMax.Validating += populationBoxMax_Validating;
             // 
             // populationBoxMin
             // 
@@ -224,6 +227,7 @@
             populationBoxMin.Name = "populationBoxMin";
             populationBoxMin.Size = new Size(157, 29);
             populationBoxMin.TabIndex = 30;
+            populationBoxMin.Validating += populationBoxMin_Validating;
             // 
             // label9
             // 
@@ -264,6 +268,7 @@
             areaBoxMax.Name = "areaBoxMax";
             areaBoxMax.Size = new Size(157, 29);
             areaBoxMax.TabIndex = 26;
+            areaBoxMax.Validating += areaBoxMax_Validating;
             // 
             // areaBoxMin
             // 
@@ -273,6 +278,7 @@
             areaBoxMin.Name = "areaBoxMin";
             areaBoxMin.Size = new Size(157, 29);
             areaBoxMin.TabIndex = 25;
+            areaBoxMin.Validating += areaBoxMin_Validating;
             // 
             // label3
             // 
@@ -293,6 +299,7 @@
             nameBox.Name = "nameBox";
             nameBox.Size = new Size(157, 29);
             nameBox.TabIndex = 23;
+            nameBox.Validating += nameBox_Validating;
             // 
             // label2
             // 
@@ -319,7 +326,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(0, 0);
+            label10.Location = new Point(-1, 0);
             label10.Name = "label10";
             label10.Size = new Size(113, 15);
             label10.TabIndex = 0;
@@ -327,6 +334,8 @@
             // 
             // searchResultBox
             // 
+            searchResultBox.DataSource = countryBindingSource1;
+            searchResultBox.DisplayMember = "Name";
             searchResultBox.Dock = DockStyle.Fill;
             searchResultBox.Font = new Font("Segoe UI", 12F);
             searchResultBox.FormattingEnabled = true;
@@ -335,6 +344,14 @@
             searchResultBox.Name = "searchResultBox";
             searchResultBox.Size = new Size(578, 203);
             searchResultBox.TabIndex = 1;
+            // 
+            // countryBindingSource1
+            // 
+            countryBindingSource1.DataSource = typeof(Models.Country);
+            // 
+            // countryBindingSource
+            // 
+            countryBindingSource.DataSource = typeof(Models.Country);
             // 
             // menuStrip1
             // 
@@ -542,15 +559,6 @@
             опрограммеToolStripMenuItem.Size = new Size(158, 22);
             опрограммеToolStripMenuItem.Text = "&О программе…";
             // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(-1, -1);
-            label11.Name = "label11";
-            label11.Size = new Size(80, 15);
-            label11.TabIndex = 1;
-            label11.Text = "Список країн";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -563,7 +571,6 @@
             Name = "MainForm";
             Text = "MainForm";
             splitContainer1.Panel1.ResumeLayout(false);
-            splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
@@ -573,6 +580,8 @@
             splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)countryBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)countryBindingSource).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -582,7 +591,6 @@
         #endregion
 
         private SplitContainer splitContainer1;
-        private ListBox countryBox;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem создатьToolStripMenuItem;
@@ -632,6 +640,8 @@
         private Label label10;
         private ListBox searchResultBox;
         private Button searchButton;
-        private Label label11;
+        private BindingSource countryBindingSource;
+        private TreeView countryView;
+        private BindingSource countryBindingSource1;
     }
 }

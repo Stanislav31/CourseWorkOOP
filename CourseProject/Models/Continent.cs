@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CourseProject.Models
 {
-    internal class Continent
+    public class Continent
     {
+        public List<Country> Countries { get; set; }
+        public string Name { get; set; }
+        public double Area { get; set; }
+        public int Population { get; set; }
     }
 }
