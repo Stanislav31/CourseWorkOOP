@@ -31,10 +31,18 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             splitContainer1 = new SplitContainer();
-            countryView = new TreeView();
+            dataView = new TreeView();
             splitContainer2 = new SplitContainer();
+            toolStrip1 = new ToolStrip();
+            addCountryButton = new ToolStripButton();
+            getLocationButton = new ToolStripButton();
+            helpButton = new ToolStripButton();
+            clearButton = new Button();
+            label11 = new Label();
+            searchType = new ComboBox();
             searchButton = new Button();
             continentBox = new TextBox();
+            label10 = new Label();
             label4 = new Label();
             label5 = new Label();
             label8 = new Label();
@@ -49,40 +57,17 @@
             nameBox = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            label10 = new Label();
-            searchResultBox = new ListBox();
-            countryBindingSource1 = new BindingSource(components);
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            searchResultBoxCities = new ListBox();
+            cityBindingSource = new BindingSource(components);
+            searchResultBoxCountries = new ListBox();
             countryBindingSource = new BindingSource(components);
-            menuStrip1 = new MenuStrip();
-            файлToolStripMenuItem = new ToolStripMenuItem();
-            создатьToolStripMenuItem = new ToolStripMenuItem();
-            открытьToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator = new ToolStripSeparator();
-            сохранитьToolStripMenuItem = new ToolStripMenuItem();
-            сохранитькакToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            печатьToolStripMenuItem = new ToolStripMenuItem();
-            предварительныйпросмотрToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator2 = new ToolStripSeparator();
-            выходToolStripMenuItem = new ToolStripMenuItem();
-            изменитьToolStripMenuItem = new ToolStripMenuItem();
-            отменитьToolStripMenuItem = new ToolStripMenuItem();
-            повторитьToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator3 = new ToolStripSeparator();
-            вырезатьToolStripMenuItem = new ToolStripMenuItem();
-            копироватьToolStripMenuItem = new ToolStripMenuItem();
-            вставитьToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator4 = new ToolStripSeparator();
-            выбратьвсеToolStripMenuItem = new ToolStripMenuItem();
-            инструментыToolStripMenuItem = new ToolStripMenuItem();
-            настройкиToolStripMenuItem = new ToolStripMenuItem();
-            параметрыToolStripMenuItem = new ToolStripMenuItem();
-            справкаToolStripMenuItem = new ToolStripMenuItem();
-            содержимоеToolStripMenuItem = new ToolStripMenuItem();
-            индексToolStripMenuItem = new ToolStripMenuItem();
-            поискToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator5 = new ToolStripSeparator();
-            опрограммеToolStripMenuItem = new ToolStripMenuItem();
+            searchResultBoxContinents = new ListBox();
+            continentBindingSource = new BindingSource(components);
+            searchResultBox = new ListBox();
+            typeSearchBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -91,9 +76,11 @@
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)countryBindingSource1).BeginInit();
+            toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cityBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)countryBindingSource).BeginInit();
-            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)continentBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)typeSearchBindingSource).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -101,40 +88,48 @@
             splitContainer1.BorderStyle = BorderStyle.FixedSingle;
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.FixedPanel = FixedPanel.Panel1;
-            splitContainer1.Location = new Point(0, 24);
+            splitContainer1.IsSplitterFixed = true;
+            splitContainer1.Location = new Point(0, 0);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(countryView);
+            splitContainer1.Panel1.Controls.Add(dataView);
             // 
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
-            splitContainer1.Size = new Size(884, 537);
-            splitContainer1.SplitterDistance = 300;
+            splitContainer1.Size = new Size(884, 561);
+            splitContainer1.SplitterDistance = 260;
             splitContainer1.TabIndex = 0;
             // 
-            // countryView
+            // dataView
             // 
-            countryView.Dock = DockStyle.Fill;
-            countryView.Location = new Point(0, 0);
-            countryView.Name = "countryView";
-            countryView.Size = new Size(298, 535);
-            countryView.TabIndex = 2;
+            dataView.Dock = DockStyle.Fill;
+            dataView.Location = new Point(0, 0);
+            dataView.Name = "dataView";
+            dataView.Size = new Size(258, 559);
+            dataView.TabIndex = 10;
+            dataView.DoubleClick += countryView_DoubleClick;
             // 
             // splitContainer2
             // 
             splitContainer2.BorderStyle = BorderStyle.FixedSingle;
             splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.IsSplitterFixed = true;
             splitContainer2.Location = new Point(0, 0);
             splitContainer2.Name = "splitContainer2";
             splitContainer2.Orientation = Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
+            splitContainer2.Panel1.Controls.Add(toolStrip1);
+            splitContainer2.Panel1.Controls.Add(clearButton);
+            splitContainer2.Panel1.Controls.Add(label11);
+            splitContainer2.Panel1.Controls.Add(searchType);
             splitContainer2.Panel1.Controls.Add(searchButton);
             splitContainer2.Panel1.Controls.Add(continentBox);
+            splitContainer2.Panel1.Controls.Add(label10);
             splitContainer2.Panel1.Controls.Add(label4);
             splitContainer2.Panel1.Controls.Add(label5);
             splitContainer2.Panel1.Controls.Add(label8);
@@ -152,18 +147,94 @@
             // 
             // splitContainer2.Panel2
             // 
-            splitContainer2.Panel2.Controls.Add(label10);
+            splitContainer2.Panel2.Controls.Add(label14);
+            splitContainer2.Panel2.Controls.Add(label13);
+            splitContainer2.Panel2.Controls.Add(label12);
+            splitContainer2.Panel2.Controls.Add(searchResultBoxCities);
+            splitContainer2.Panel2.Controls.Add(searchResultBoxCountries);
+            splitContainer2.Panel2.Controls.Add(searchResultBoxContinents);
             splitContainer2.Panel2.Controls.Add(searchResultBox);
-            splitContainer2.Size = new Size(580, 537);
-            splitContainer2.SplitterDistance = 328;
+            splitContainer2.Size = new Size(620, 561);
+            splitContainer2.SplitterDistance = 342;
             splitContainer2.TabIndex = 21;
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.Items.AddRange(new ToolStripItem[] { addCountryButton, getLocationButton, helpButton });
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(618, 25);
+            toolStrip1.TabIndex = 40;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // addCountryButton
+            // 
+            addCountryButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            addCountryButton.Image = (Image)resources.GetObject("addCountryButton.Image");
+            addCountryButton.ImageTransparentColor = Color.Magenta;
+            addCountryButton.Name = "addCountryButton";
+            addCountryButton.Size = new Size(23, 22);
+            addCountryButton.Text = "Додати країну";
+            addCountryButton.Click += addCountryButton_Click;
+            // 
+            // getLocationButton
+            // 
+            getLocationButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            getLocationButton.Image = (Image)resources.GetObject("getLocationButton.Image");
+            getLocationButton.ImageTransparentColor = Color.Magenta;
+            getLocationButton.Name = "getLocationButton";
+            getLocationButton.Size = new Size(23, 22);
+            getLocationButton.Text = "Визначити місцезнаходження";
+            getLocationButton.Click += getLocationButton_Click;
+            // 
+            // helpButton
+            // 
+            helpButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            helpButton.Image = (Image)resources.GetObject("helpButton.Image");
+            helpButton.ImageTransparentColor = Color.Magenta;
+            helpButton.Name = "helpButton";
+            helpButton.Size = new Size(23, 22);
+            helpButton.Text = "Довідка";
+            // 
+            // clearButton
+            // 
+            clearButton.Anchor = AnchorStyles.Top;
+            clearButton.Location = new Point(483, 291);
+            clearButton.Name = "clearButton";
+            clearButton.Size = new Size(75, 30);
+            clearButton.TabIndex = 9;
+            clearButton.Text = "Очистити";
+            clearButton.UseVisualStyleBackColor = true;
+            clearButton.Click += clearButton_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F);
+            label11.Location = new Point(14, 289);
+            label11.Name = "label11";
+            label11.Size = new Size(99, 21);
+            label11.TabIndex = 38;
+            label11.Text = "Що шукати?";
+            // 
+            // searchType
+            // 
+            searchType.Font = new Font("Segoe UI", 12F);
+            searchType.FormattingEnabled = true;
+            searchType.Items.AddRange(new object[] { "-", "Материк", "Країна", "Місто" });
+            searchType.Location = new Point(119, 289);
+            searchType.Name = "searchType";
+            searchType.Size = new Size(157, 29);
+            searchType.TabIndex = 7;
+            searchType.SelectedIndexChanged += searchType_SelectedIndexChanged;
             // 
             // searchButton
             // 
-            searchButton.Location = new Point(255, 289);
+            searchButton.Anchor = AnchorStyles.Top;
+            searchButton.Location = new Point(401, 291);
             searchButton.Name = "searchButton";
-            searchButton.Size = new Size(75, 23);
-            searchButton.TabIndex = 36;
+            searchButton.Size = new Size(75, 30);
+            searchButton.TabIndex = 8;
             searchButton.Text = "Знайти";
             searchButton.UseVisualStyleBackColor = true;
             searchButton.Click += searchButton_Click;
@@ -172,18 +243,27 @@
             // 
             continentBox.Anchor = AnchorStyles.Top;
             continentBox.Font = new Font("Segoe UI", 12F);
-            continentBox.Location = new Point(381, 115);
+            continentBox.Location = new Point(401, 115);
             continentBox.Name = "continentBox";
             continentBox.Size = new Size(157, 29);
-            continentBox.TabIndex = 35;
+            continentBox.TabIndex = 2;
             continentBox.Validating += continentBox_Validating;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(0, 325);
+            label10.Name = "label10";
+            label10.Size = new Size(113, 15);
+            label10.TabIndex = 0;
+            label10.Text = "Результати пошуку";
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(302, 115);
+            label4.Location = new Point(322, 115);
             label4.Name = "label4";
             label4.Size = new Size(73, 21);
             label4.TabIndex = 34;
@@ -193,7 +273,7 @@
             // 
             label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
-            label5.Location = new Point(381, 226);
+            label5.Location = new Point(401, 226);
             label5.Name = "label5";
             label5.Size = new Size(73, 15);
             label5.TabIndex = 33;
@@ -203,7 +283,7 @@
             // 
             label8.Anchor = AnchorStyles.Top;
             label8.AutoSize = true;
-            label8.Location = new Point(381, 169);
+            label8.Location = new Point(401, 169);
             label8.Name = "label8";
             label8.Size = new Size(72, 15);
             label8.TabIndex = 32;
@@ -213,20 +293,20 @@
             // 
             populationBoxMax.Anchor = AnchorStyles.Top;
             populationBoxMax.Font = new Font("Segoe UI", 12F);
-            populationBoxMax.Location = new Point(381, 244);
+            populationBoxMax.Location = new Point(401, 244);
             populationBoxMax.Name = "populationBoxMax";
             populationBoxMax.Size = new Size(157, 29);
-            populationBoxMax.TabIndex = 31;
+            populationBoxMax.TabIndex = 6;
             populationBoxMax.Validating += populationBoxMax_Validating;
             // 
             // populationBoxMin
             // 
             populationBoxMin.Anchor = AnchorStyles.Top;
             populationBoxMin.Font = new Font("Segoe UI", 12F);
-            populationBoxMin.Location = new Point(381, 187);
+            populationBoxMin.Location = new Point(401, 187);
             populationBoxMin.Name = "populationBoxMin";
             populationBoxMin.Size = new Size(157, 29);
-            populationBoxMin.TabIndex = 30;
+            populationBoxMin.TabIndex = 5;
             populationBoxMin.Validating += populationBoxMin_Validating;
             // 
             // label9
@@ -234,7 +314,7 @@
             label9.Anchor = AnchorStyles.Top;
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F);
-            label9.Location = new Point(289, 164);
+            label9.Location = new Point(309, 164);
             label9.Name = "label9";
             label9.Size = new Size(86, 21);
             label9.TabIndex = 29;
@@ -244,7 +324,7 @@
             // 
             label7.Anchor = AnchorStyles.Top;
             label7.AutoSize = true;
-            label7.Location = new Point(99, 227);
+            label7.Location = new Point(119, 227);
             label7.Name = "label7";
             label7.Size = new Size(73, 15);
             label7.TabIndex = 28;
@@ -254,7 +334,7 @@
             // 
             label6.Anchor = AnchorStyles.Top;
             label6.AutoSize = true;
-            label6.Location = new Point(99, 170);
+            label6.Location = new Point(119, 170);
             label6.Name = "label6";
             label6.Size = new Size(72, 15);
             label6.TabIndex = 27;
@@ -264,20 +344,20 @@
             // 
             areaBoxMax.Anchor = AnchorStyles.Top;
             areaBoxMax.Font = new Font("Segoe UI", 12F);
-            areaBoxMax.Location = new Point(99, 245);
+            areaBoxMax.Location = new Point(119, 245);
             areaBoxMax.Name = "areaBoxMax";
             areaBoxMax.Size = new Size(157, 29);
-            areaBoxMax.TabIndex = 26;
+            areaBoxMax.TabIndex = 4;
             areaBoxMax.Validating += areaBoxMax_Validating;
             // 
             // areaBoxMin
             // 
             areaBoxMin.Anchor = AnchorStyles.Top;
             areaBoxMin.Font = new Font("Segoe UI", 12F);
-            areaBoxMin.Location = new Point(99, 188);
+            areaBoxMin.Location = new Point(119, 188);
             areaBoxMin.Name = "areaBoxMin";
             areaBoxMin.Size = new Size(157, 29);
-            areaBoxMin.TabIndex = 25;
+            areaBoxMin.TabIndex = 3;
             areaBoxMin.Validating += areaBoxMin_Validating;
             // 
             // label3
@@ -285,7 +365,7 @@
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(34, 164);
+            label3.Location = new Point(54, 164);
             label3.Name = "label3";
             label3.Size = new Size(59, 21);
             label3.TabIndex = 24;
@@ -295,10 +375,10 @@
             // 
             nameBox.Anchor = AnchorStyles.Top;
             nameBox.Font = new Font("Segoe UI", 12F);
-            nameBox.Location = new Point(99, 115);
+            nameBox.Location = new Point(119, 115);
             nameBox.Name = "nameBox";
             nameBox.Size = new Size(157, 29);
-            nameBox.TabIndex = 23;
+            nameBox.TabIndex = 1;
             nameBox.Validating += nameBox_Validating;
             // 
             // label2
@@ -306,7 +386,7 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(41, 115);
+            label2.Location = new Point(61, 115);
             label2.Name = "label2";
             label2.Size = new Size(52, 21);
             label2.TabIndex = 22;
@@ -317,24 +397,99 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(243, 23);
+            label1.Location = new Point(263, 23);
             label1.Name = "label1";
             label1.Size = new Size(100, 37);
             label1.TabIndex = 21;
             label1.Text = "Пошук";
             // 
-            // label10
+            // label14
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(-1, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(113, 15);
-            label10.TabIndex = 0;
-            label10.Text = "Результати пошуку";
+            label14.AutoSize = true;
+            label14.Location = new Point(419, 19);
+            label14.Name = "label14";
+            label14.Size = new Size(38, 15);
+            label14.TabIndex = 7;
+            label14.Text = "Міста";
+            label14.Visible = false;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(212, 19);
+            label13.Name = "label13";
+            label13.Size = new Size(44, 15);
+            label13.TabIndex = 6;
+            label13.Text = "Країни";
+            label13.Visible = false;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(5, 19);
+            label12.Name = "label12";
+            label12.Size = new Size(62, 15);
+            label12.TabIndex = 5;
+            label12.Text = "Материки";
+            label12.Visible = false;
+            // 
+            // searchResultBoxCities
+            // 
+            searchResultBoxCities.DataSource = cityBindingSource;
+            searchResultBoxCities.DisplayMember = "Name";
+            searchResultBoxCities.Font = new Font("Segoe UI", 12F);
+            searchResultBoxCities.FormattingEnabled = true;
+            searchResultBoxCities.ItemHeight = 21;
+            searchResultBoxCities.Location = new Point(419, 37);
+            searchResultBoxCities.Name = "searchResultBoxCities";
+            searchResultBoxCities.Size = new Size(190, 151);
+            searchResultBoxCities.TabIndex = 14;
+            searchResultBoxCities.Visible = false;
+            searchResultBoxCities.DoubleClick += searchResultBoxCities_DoubleClick;
+            // 
+            // cityBindingSource
+            // 
+            cityBindingSource.DataSource = typeof(Models.City);
+            // 
+            // searchResultBoxCountries
+            // 
+            searchResultBoxCountries.DataSource = countryBindingSource;
+            searchResultBoxCountries.DisplayMember = "Name";
+            searchResultBoxCountries.Font = new Font("Segoe UI", 12F);
+            searchResultBoxCountries.FormattingEnabled = true;
+            searchResultBoxCountries.ItemHeight = 21;
+            searchResultBoxCountries.Location = new Point(212, 37);
+            searchResultBoxCountries.Name = "searchResultBoxCountries";
+            searchResultBoxCountries.Size = new Size(190, 151);
+            searchResultBoxCountries.TabIndex = 13;
+            searchResultBoxCountries.Visible = false;
+            searchResultBoxCountries.DoubleClick += searchResultBoxCountries_DoubleClick;
+            // 
+            // countryBindingSource
+            // 
+            countryBindingSource.DataSource = typeof(Models.Country);
+            // 
+            // searchResultBoxContinents
+            // 
+            searchResultBoxContinents.DataSource = continentBindingSource;
+            searchResultBoxContinents.DisplayMember = "Name";
+            searchResultBoxContinents.Font = new Font("Segoe UI", 12F);
+            searchResultBoxContinents.FormattingEnabled = true;
+            searchResultBoxContinents.ItemHeight = 21;
+            searchResultBoxContinents.Location = new Point(5, 37);
+            searchResultBoxContinents.Name = "searchResultBoxContinents";
+            searchResultBoxContinents.Size = new Size(190, 151);
+            searchResultBoxContinents.TabIndex = 12;
+            searchResultBoxContinents.Visible = false;
+            searchResultBoxContinents.DoubleClick += searchResultBoxContinents_DoubleClick;
+            // 
+            // continentBindingSource
+            // 
+            continentBindingSource.DataSource = typeof(Models.Continent);
             // 
             // searchResultBox
             // 
-            searchResultBox.DataSource = countryBindingSource1;
+            searchResultBox.DataSource = typeSearchBindingSource;
             searchResultBox.DisplayMember = "Name";
             searchResultBox.Dock = DockStyle.Fill;
             searchResultBox.Font = new Font("Segoe UI", 12F);
@@ -342,222 +497,13 @@
             searchResultBox.ItemHeight = 21;
             searchResultBox.Location = new Point(0, 0);
             searchResultBox.Name = "searchResultBox";
-            searchResultBox.Size = new Size(578, 203);
-            searchResultBox.TabIndex = 1;
+            searchResultBox.Size = new Size(618, 213);
+            searchResultBox.TabIndex = 11;
+            searchResultBox.MouseDoubleClick += searchResultBox_MouseDoubleClick;
             // 
-            // countryBindingSource1
+            // typeSearchBindingSource
             // 
-            countryBindingSource1.DataSource = typeof(Models.Country);
-            // 
-            // countryBindingSource
-            // 
-            countryBindingSource.DataSource = typeof(Models.Country);
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, изменитьToolStripMenuItem, инструментыToolStripMenuItem, справкаToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(884, 24);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // файлToolStripMenuItem
-            // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { создатьToolStripMenuItem, открытьToolStripMenuItem, toolStripSeparator, сохранитьToolStripMenuItem, сохранитькакToolStripMenuItem, toolStripSeparator1, печатьToolStripMenuItem, предварительныйпросмотрToolStripMenuItem, toolStripSeparator2, выходToolStripMenuItem });
-            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            файлToolStripMenuItem.Size = new Size(48, 20);
-            файлToolStripMenuItem.Text = "&Файл";
-            // 
-            // создатьToolStripMenuItem
-            // 
-            создатьToolStripMenuItem.Image = (Image)resources.GetObject("создатьToolStripMenuItem.Image");
-            создатьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            создатьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            создатьToolStripMenuItem.Size = new Size(233, 22);
-            создатьToolStripMenuItem.Text = "&Создать";
-            // 
-            // открытьToolStripMenuItem
-            // 
-            открытьToolStripMenuItem.Image = (Image)resources.GetObject("открытьToolStripMenuItem.Image");
-            открытьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            открытьToolStripMenuItem.Size = new Size(233, 22);
-            открытьToolStripMenuItem.Text = "&Открыть";
-            // 
-            // toolStripSeparator
-            // 
-            toolStripSeparator.Name = "toolStripSeparator";
-            toolStripSeparator.Size = new Size(230, 6);
-            // 
-            // сохранитьToolStripMenuItem
-            // 
-            сохранитьToolStripMenuItem.Image = (Image)resources.GetObject("сохранитьToolStripMenuItem.Image");
-            сохранитьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            сохранитьToolStripMenuItem.Size = new Size(233, 22);
-            сохранитьToolStripMenuItem.Text = "&Сохранить";
-            // 
-            // сохранитькакToolStripMenuItem
-            // 
-            сохранитькакToolStripMenuItem.Name = "сохранитькакToolStripMenuItem";
-            сохранитькакToolStripMenuItem.Size = new Size(233, 22);
-            сохранитькакToolStripMenuItem.Text = "Сохранить &как";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(230, 6);
-            // 
-            // печатьToolStripMenuItem
-            // 
-            печатьToolStripMenuItem.Image = (Image)resources.GetObject("печатьToolStripMenuItem.Image");
-            печатьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            печатьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.P;
-            печатьToolStripMenuItem.Size = new Size(233, 22);
-            печатьToolStripMenuItem.Text = "&Печать";
-            // 
-            // предварительныйпросмотрToolStripMenuItem
-            // 
-            предварительныйпросмотрToolStripMenuItem.Image = (Image)resources.GetObject("предварительныйпросмотрToolStripMenuItem.Image");
-            предварительныйпросмотрToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            предварительныйпросмотрToolStripMenuItem.Name = "предварительныйпросмотрToolStripMenuItem";
-            предварительныйпросмотрToolStripMenuItem.Size = new Size(233, 22);
-            предварительныйпросмотрToolStripMenuItem.Text = "Предварительный про&смотр";
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(230, 6);
-            // 
-            // выходToolStripMenuItem
-            // 
-            выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(233, 22);
-            выходToolStripMenuItem.Text = "Вы&ход";
-            // 
-            // изменитьToolStripMenuItem
-            // 
-            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { отменитьToolStripMenuItem, повторитьToolStripMenuItem, toolStripSeparator3, вырезатьToolStripMenuItem, копироватьToolStripMenuItem, вставитьToolStripMenuItem, toolStripSeparator4, выбратьвсеToolStripMenuItem });
-            изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            изменитьToolStripMenuItem.Size = new Size(73, 20);
-            изменитьToolStripMenuItem.Text = "&Изменить";
-            // 
-            // отменитьToolStripMenuItem
-            // 
-            отменитьToolStripMenuItem.Name = "отменитьToolStripMenuItem";
-            отменитьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
-            отменитьToolStripMenuItem.Size = new Size(181, 22);
-            отменитьToolStripMenuItem.Text = "&Отменить";
-            // 
-            // повторитьToolStripMenuItem
-            // 
-            повторитьToolStripMenuItem.Name = "повторитьToolStripMenuItem";
-            повторитьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Y;
-            повторитьToolStripMenuItem.Size = new Size(181, 22);
-            повторитьToolStripMenuItem.Text = "&Повторить";
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(178, 6);
-            // 
-            // вырезатьToolStripMenuItem
-            // 
-            вырезатьToolStripMenuItem.Image = (Image)resources.GetObject("вырезатьToolStripMenuItem.Image");
-            вырезатьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
-            вырезатьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-            вырезатьToolStripMenuItem.Size = new Size(181, 22);
-            вырезатьToolStripMenuItem.Text = "В&ырезать";
-            // 
-            // копироватьToolStripMenuItem
-            // 
-            копироватьToolStripMenuItem.Image = (Image)resources.GetObject("копироватьToolStripMenuItem.Image");
-            копироватьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
-            копироватьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
-            копироватьToolStripMenuItem.Size = new Size(181, 22);
-            копироватьToolStripMenuItem.Text = "&Копировать";
-            // 
-            // вставитьToolStripMenuItem
-            // 
-            вставитьToolStripMenuItem.Image = (Image)resources.GetObject("вставитьToolStripMenuItem.Image");
-            вставитьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            вставитьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
-            вставитьToolStripMenuItem.Size = new Size(181, 22);
-            вставитьToolStripMenuItem.Text = "&Вставить";
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(178, 6);
-            // 
-            // выбратьвсеToolStripMenuItem
-            // 
-            выбратьвсеToolStripMenuItem.Name = "выбратьвсеToolStripMenuItem";
-            выбратьвсеToolStripMenuItem.Size = new Size(181, 22);
-            выбратьвсеToolStripMenuItem.Text = "Выбрать &все";
-            // 
-            // инструментыToolStripMenuItem
-            // 
-            инструментыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { настройкиToolStripMenuItem, параметрыToolStripMenuItem });
-            инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
-            инструментыToolStripMenuItem.Size = new Size(95, 20);
-            инструментыToolStripMenuItem.Text = "&Инструменты";
-            // 
-            // настройкиToolStripMenuItem
-            // 
-            настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            настройкиToolStripMenuItem.Size = new Size(138, 22);
-            настройкиToolStripMenuItem.Text = "&Настройки";
-            // 
-            // параметрыToolStripMenuItem
-            // 
-            параметрыToolStripMenuItem.Name = "параметрыToolStripMenuItem";
-            параметрыToolStripMenuItem.Size = new Size(138, 22);
-            параметрыToolStripMenuItem.Text = "&Параметры";
-            // 
-            // справкаToolStripMenuItem
-            // 
-            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { содержимоеToolStripMenuItem, индексToolStripMenuItem, поискToolStripMenuItem, toolStripSeparator5, опрограммеToolStripMenuItem });
-            справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            справкаToolStripMenuItem.Size = new Size(65, 20);
-            справкаToolStripMenuItem.Text = "&Справка";
-            // 
-            // содержимоеToolStripMenuItem
-            // 
-            содержимоеToolStripMenuItem.Name = "содержимоеToolStripMenuItem";
-            содержимоеToolStripMenuItem.Size = new Size(158, 22);
-            содержимоеToolStripMenuItem.Text = "&Содержимое";
-            // 
-            // индексToolStripMenuItem
-            // 
-            индексToolStripMenuItem.Name = "индексToolStripMenuItem";
-            индексToolStripMenuItem.Size = new Size(158, 22);
-            индексToolStripMenuItem.Text = "&Индекс";
-            // 
-            // поискToolStripMenuItem
-            // 
-            поискToolStripMenuItem.Name = "поискToolStripMenuItem";
-            поискToolStripMenuItem.Size = new Size(158, 22);
-            поискToolStripMenuItem.Text = "&Поиск";
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(155, 6);
-            // 
-            // опрограммеToolStripMenuItem
-            // 
-            опрограммеToolStripMenuItem.Name = "опрограммеToolStripMenuItem";
-            опрограммеToolStripMenuItem.Size = new Size(158, 22);
-            опрограммеToolStripMenuItem.Text = "&О программе…";
+            typeSearchBindingSource.DataSource = typeof(Models.Country);
             // 
             // MainForm
             // 
@@ -565,11 +511,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(884, 561);
             Controls.Add(splitContainer1);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
             MinimumSize = new Size(840, 570);
             Name = "MainForm";
             Text = "MainForm";
+            FormClosing += MainForm_FormClosing;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -580,49 +525,19 @@
             splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)countryBindingSource1).EndInit();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)cityBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)countryBindingSource).EndInit();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)continentBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)typeSearchBindingSource).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private SplitContainer splitContainer1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem файлToolStripMenuItem;
-        private ToolStripMenuItem создатьToolStripMenuItem;
-        private ToolStripMenuItem открытьToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator;
-        private ToolStripMenuItem сохранитьToolStripMenuItem;
-        private ToolStripMenuItem сохранитькакToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem печатьToolStripMenuItem;
-        private ToolStripMenuItem предварительныйпросмотрToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem выходToolStripMenuItem;
-        private ToolStripMenuItem изменитьToolStripMenuItem;
-        private ToolStripMenuItem отменитьToolStripMenuItem;
-        private ToolStripMenuItem повторитьToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator3;
-        private ToolStripMenuItem вырезатьToolStripMenuItem;
-        private ToolStripMenuItem копироватьToolStripMenuItem;
-        private ToolStripMenuItem вставитьToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator4;
-        private ToolStripMenuItem выбратьвсеToolStripMenuItem;
-        private ToolStripMenuItem инструментыToolStripMenuItem;
-        private ToolStripMenuItem настройкиToolStripMenuItem;
-        private ToolStripMenuItem параметрыToolStripMenuItem;
-        private ToolStripMenuItem справкаToolStripMenuItem;
-        private ToolStripMenuItem содержимоеToolStripMenuItem;
-        private ToolStripMenuItem индексToolStripMenuItem;
-        private ToolStripMenuItem поискToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator5;
-        private ToolStripMenuItem опрограммеToolStripMenuItem;
         private SplitContainer splitContainer2;
-        private TextBox continentBox;
         private Label label4;
         private Label label5;
         private Label label8;
@@ -640,8 +555,24 @@
         private Label label10;
         private ListBox searchResultBox;
         private Button searchButton;
+        private TreeView dataView;
+        private ComboBox searchType;
+        private TextBox continentBox;
+        private Label label11;
+        private Button clearButton;
+        private ToolStrip toolStrip1;
+        private ToolStripButton getLocationButton;
+        private ToolStripButton helpButton;
+        private ListBox searchResultBoxCities;
+        private ListBox searchResultBoxCountries;
+        private ListBox searchResultBoxContinents;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private BindingSource typeSearchBindingSource;
+        private BindingSource cityBindingSource;
         private BindingSource countryBindingSource;
-        private TreeView countryView;
-        private BindingSource countryBindingSource1;
+        private BindingSource continentBindingSource;
+        private ToolStripButton addCountryButton;
     }
 }

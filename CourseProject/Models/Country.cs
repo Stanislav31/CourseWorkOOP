@@ -18,5 +18,6 @@ namespace CourseProject.Models
         public double Area { get; set; }
         public List<City> Cities { get; set; }
         public Continent Continent { get; set; }
+        //public TimeZoneInfo TimeZone { get; set; }
     }
 }

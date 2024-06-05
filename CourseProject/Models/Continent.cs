@@ -8,9 +8,10 @@ namespace CourseProject.Models
 {
     public class Continent
     {
-        public List<Country> Countries { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public double Area { get; set; }
         public int Population { get; set; }
+        public List<Country> Countries { get; set; }
     }
 }
