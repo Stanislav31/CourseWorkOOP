@@ -54,7 +54,7 @@
             continentDescription.Location = new Point(0, 0);
             continentDescription.Name = "continentDescription";
             continentDescription.ReadOnly = true;
-            continentDescription.Size = new Size(539, 409);
+            continentDescription.Size = new Size(500, 409);
             continentDescription.TabIndex = 0;
             continentDescription.Text = "";
             // 
@@ -77,7 +77,7 @@
             splitContainer1.Panel2.Controls.Add(descriptionTitle);
             splitContainer1.Panel2.Controls.Add(splitContainer2);
             splitContainer1.Size = new Size(784, 461);
-            splitContainer1.SplitterDistance = 239;
+            splitContainer1.SplitterDistance = 278;
             splitContainer1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -87,14 +87,15 @@
             tableLayoutPanel1.Controls.Add(area, 0, 2);
             tableLayoutPanel1.Controls.Add(population, 0, 0);
             tableLayoutPanel1.Controls.Add(countryCount, 0, 1);
-            tableLayoutPanel1.Location = new Point(0, 63);
+            tableLayoutPanel1.Dock = DockStyle.Bottom;
+            tableLayoutPanel1.Location = new Point(0, 64);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(236, 395);
+            tableLayoutPanel1.Size = new Size(276, 395);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // area
@@ -104,7 +105,7 @@
             area.Font = new Font("Segoe UI", 12F);
             area.Location = new Point(3, 90);
             area.Name = "area";
-            area.Size = new Size(230, 305);
+            area.Size = new Size(270, 305);
             area.TabIndex = 6;
             area.Text = "Area";
             // 
@@ -115,7 +116,7 @@
             population.Font = new Font("Segoe UI", 12F);
             population.Location = new Point(3, 0);
             population.Name = "population";
-            population.Size = new Size(230, 45);
+            population.Size = new Size(270, 45);
             population.TabIndex = 3;
             population.Text = "Population";
             // 
@@ -126,7 +127,7 @@
             countryCount.Font = new Font("Segoe UI", 12F);
             countryCount.Location = new Point(3, 45);
             countryCount.Name = "countryCount";
-            countryCount.Size = new Size(230, 45);
+            countryCount.Size = new Size(270, 45);
             countryCount.TabIndex = 5;
             countryCount.Text = "CountryCount";
             // 
@@ -162,7 +163,7 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(continentDescription);
-            splitContainer2.Size = new Size(539, 459);
+            splitContainer2.Size = new Size(500, 459);
             splitContainer2.SplitterDistance = 46;
             splitContainer2.TabIndex = 2;
             // 

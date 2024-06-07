@@ -31,6 +31,7 @@
             cityDescription = new RichTextBox();
             splitContainer1 = new SplitContainer();
             tableLayoutPanel1 = new TableLayoutPanel();
+            deleteButton = new Button();
             coordinates = new Label();
             continent = new Label();
             population = new Label();
@@ -55,7 +56,7 @@
             cityDescription.Location = new Point(0, 0);
             cityDescription.Name = "cityDescription";
             cityDescription.ReadOnly = true;
-            cityDescription.Size = new Size(539, 409);
+            cityDescription.Size = new Size(489, 409);
             cityDescription.TabIndex = 0;
             cityDescription.Text = "";
             // 
@@ -78,26 +79,40 @@
             splitContainer1.Panel2.Controls.Add(descriptionTitle);
             splitContainer1.Panel2.Controls.Add(splitContainer2);
             splitContainer1.Size = new Size(784, 461);
-            splitContainer1.SplitterDistance = 239;
+            splitContainer1.SplitterDistance = 289;
             splitContainer1.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(deleteButton, 0, 4);
             tableLayoutPanel1.Controls.Add(coordinates, 0, 3);
             tableLayoutPanel1.Controls.Add(continent, 0, 2);
             tableLayoutPanel1.Controls.Add(population, 0, 0);
             tableLayoutPanel1.Controls.Add(country, 0, 1);
-            tableLayoutPanel1.Location = new Point(0, 63);
+            tableLayoutPanel1.Dock = DockStyle.Bottom;
+            tableLayoutPanel1.Location = new Point(0, 64);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            tableLayoutPanel1.Size = new Size(236, 395);
+            tableLayoutPanel1.Size = new Size(287, 395);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // deleteButton
+            // 
+            deleteButton.Dock = DockStyle.Top;
+            deleteButton.Location = new Point(3, 248);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(281, 23);
+            deleteButton.TabIndex = 11;
+            deleteButton.Text = "Видалити";
+            deleteButton.UseVisualStyleBackColor = true;
+            deleteButton.Click += deleteButton_Click;
             // 
             // coordinates
             // 
@@ -106,7 +121,7 @@
             coordinates.Font = new Font("Segoe UI", 12F);
             coordinates.Location = new Point(3, 135);
             coordinates.Name = "coordinates";
-            coordinates.Size = new Size(230, 260);
+            coordinates.Size = new Size(281, 110);
             coordinates.TabIndex = 7;
             coordinates.Text = "Coordinates";
             // 
@@ -117,7 +132,7 @@
             continent.Font = new Font("Segoe UI", 12F);
             continent.Location = new Point(3, 90);
             continent.Name = "continent";
-            continent.Size = new Size(230, 45);
+            continent.Size = new Size(281, 45);
             continent.TabIndex = 6;
             continent.Text = "Continent";
             // 
@@ -128,7 +143,7 @@
             population.Font = new Font("Segoe UI", 12F);
             population.Location = new Point(3, 0);
             population.Name = "population";
-            population.Size = new Size(230, 45);
+            population.Size = new Size(281, 45);
             population.TabIndex = 3;
             population.Text = "Population";
             // 
@@ -139,7 +154,7 @@
             country.Font = new Font("Segoe UI", 12F);
             country.Location = new Point(3, 45);
             country.Name = "country";
-            country.Size = new Size(230, 45);
+            country.Size = new Size(281, 45);
             country.TabIndex = 5;
             country.Text = "Country";
             // 
@@ -175,7 +190,7 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(cityDescription);
-            splitContainer2.Size = new Size(539, 459);
+            splitContainer2.Size = new Size(489, 459);
             splitContainer2.SplitterDistance = 46;
             splitContainer2.TabIndex = 2;
             // 
@@ -214,5 +229,6 @@
         private SplitContainer splitContainer2;
         private Label population;
         private Label coordinates;
+        private Button deleteButton;
     }
 }

@@ -42,7 +42,6 @@
             searchType = new ComboBox();
             searchButton = new Button();
             continentBox = new TextBox();
-            label10 = new Label();
             label4 = new Label();
             label5 = new Label();
             label8 = new Label();
@@ -129,7 +128,6 @@
             splitContainer2.Panel1.Controls.Add(searchType);
             splitContainer2.Panel1.Controls.Add(searchButton);
             splitContainer2.Panel1.Controls.Add(continentBox);
-            splitContainer2.Panel1.Controls.Add(label10);
             splitContainer2.Panel1.Controls.Add(label4);
             splitContainer2.Panel1.Controls.Add(label5);
             splitContainer2.Panel1.Controls.Add(label8);
@@ -170,7 +168,7 @@
             // addCountryButton
             // 
             addCountryButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            addCountryButton.Image = (Image)resources.GetObject("addCountryButton.Image");
+            addCountryButton.Image = Properties.Resources.plusIcon;
             addCountryButton.ImageTransparentColor = Color.Magenta;
             addCountryButton.Name = "addCountryButton";
             addCountryButton.Size = new Size(23, 22);
@@ -180,7 +178,7 @@
             // getLocationButton
             // 
             getLocationButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            getLocationButton.Image = (Image)resources.GetObject("getLocationButton.Image");
+            getLocationButton.Image = Properties.Resources.locationIcon;
             getLocationButton.ImageTransparentColor = Color.Magenta;
             getLocationButton.Name = "getLocationButton";
             getLocationButton.Size = new Size(23, 22);
@@ -199,7 +197,7 @@
             // clearButton
             // 
             clearButton.Anchor = AnchorStyles.Top;
-            clearButton.Location = new Point(483, 291);
+            clearButton.Location = new Point(489, 291);
             clearButton.Name = "clearButton";
             clearButton.Size = new Size(75, 30);
             clearButton.TabIndex = 9;
@@ -209,9 +207,10 @@
             // 
             // label11
             // 
+            label11.Anchor = AnchorStyles.Top;
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F);
-            label11.Location = new Point(14, 289);
+            label11.Location = new Point(20, 289);
             label11.Name = "label11";
             label11.Size = new Size(99, 21);
             label11.TabIndex = 38;
@@ -219,10 +218,11 @@
             // 
             // searchType
             // 
+            searchType.Anchor = AnchorStyles.Top;
             searchType.Font = new Font("Segoe UI", 12F);
             searchType.FormattingEnabled = true;
             searchType.Items.AddRange(new object[] { "-", "Материк", "Країна", "Місто" });
-            searchType.Location = new Point(119, 289);
+            searchType.Location = new Point(125, 289);
             searchType.Name = "searchType";
             searchType.Size = new Size(157, 29);
             searchType.TabIndex = 7;
@@ -231,7 +231,7 @@
             // searchButton
             // 
             searchButton.Anchor = AnchorStyles.Top;
-            searchButton.Location = new Point(401, 291);
+            searchButton.Location = new Point(407, 291);
             searchButton.Name = "searchButton";
             searchButton.Size = new Size(75, 30);
             searchButton.TabIndex = 8;
@@ -243,27 +243,18 @@
             // 
             continentBox.Anchor = AnchorStyles.Top;
             continentBox.Font = new Font("Segoe UI", 12F);
-            continentBox.Location = new Point(401, 115);
+            continentBox.Location = new Point(407, 115);
             continentBox.Name = "continentBox";
             continentBox.Size = new Size(157, 29);
             continentBox.TabIndex = 2;
             continentBox.Validating += continentBox_Validating;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(0, 325);
-            label10.Name = "label10";
-            label10.Size = new Size(113, 15);
-            label10.TabIndex = 0;
-            label10.Text = "Результати пошуку";
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(322, 115);
+            label4.Location = new Point(328, 115);
             label4.Name = "label4";
             label4.Size = new Size(73, 21);
             label4.TabIndex = 34;
@@ -273,7 +264,7 @@
             // 
             label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
-            label5.Location = new Point(401, 226);
+            label5.Location = new Point(407, 226);
             label5.Name = "label5";
             label5.Size = new Size(73, 15);
             label5.TabIndex = 33;
@@ -283,7 +274,7 @@
             // 
             label8.Anchor = AnchorStyles.Top;
             label8.AutoSize = true;
-            label8.Location = new Point(401, 169);
+            label8.Location = new Point(407, 169);
             label8.Name = "label8";
             label8.Size = new Size(72, 15);
             label8.TabIndex = 32;
@@ -293,7 +284,7 @@
             // 
             populationBoxMax.Anchor = AnchorStyles.Top;
             populationBoxMax.Font = new Font("Segoe UI", 12F);
-            populationBoxMax.Location = new Point(401, 244);
+            populationBoxMax.Location = new Point(407, 244);
             populationBoxMax.Name = "populationBoxMax";
             populationBoxMax.Size = new Size(157, 29);
             populationBoxMax.TabIndex = 6;
@@ -303,7 +294,7 @@
             // 
             populationBoxMin.Anchor = AnchorStyles.Top;
             populationBoxMin.Font = new Font("Segoe UI", 12F);
-            populationBoxMin.Location = new Point(401, 187);
+            populationBoxMin.Location = new Point(407, 187);
             populationBoxMin.Name = "populationBoxMin";
             populationBoxMin.Size = new Size(157, 29);
             populationBoxMin.TabIndex = 5;
@@ -314,7 +305,7 @@
             label9.Anchor = AnchorStyles.Top;
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F);
-            label9.Location = new Point(309, 164);
+            label9.Location = new Point(315, 164);
             label9.Name = "label9";
             label9.Size = new Size(86, 21);
             label9.TabIndex = 29;
@@ -324,7 +315,7 @@
             // 
             label7.Anchor = AnchorStyles.Top;
             label7.AutoSize = true;
-            label7.Location = new Point(119, 227);
+            label7.Location = new Point(125, 227);
             label7.Name = "label7";
             label7.Size = new Size(73, 15);
             label7.TabIndex = 28;
@@ -334,7 +325,7 @@
             // 
             label6.Anchor = AnchorStyles.Top;
             label6.AutoSize = true;
-            label6.Location = new Point(119, 170);
+            label6.Location = new Point(125, 170);
             label6.Name = "label6";
             label6.Size = new Size(72, 15);
             label6.TabIndex = 27;
@@ -344,7 +335,7 @@
             // 
             areaBoxMax.Anchor = AnchorStyles.Top;
             areaBoxMax.Font = new Font("Segoe UI", 12F);
-            areaBoxMax.Location = new Point(119, 245);
+            areaBoxMax.Location = new Point(125, 245);
             areaBoxMax.Name = "areaBoxMax";
             areaBoxMax.Size = new Size(157, 29);
             areaBoxMax.TabIndex = 4;
@@ -354,7 +345,7 @@
             // 
             areaBoxMin.Anchor = AnchorStyles.Top;
             areaBoxMin.Font = new Font("Segoe UI", 12F);
-            areaBoxMin.Location = new Point(119, 188);
+            areaBoxMin.Location = new Point(125, 188);
             areaBoxMin.Name = "areaBoxMin";
             areaBoxMin.Size = new Size(157, 29);
             areaBoxMin.TabIndex = 3;
@@ -365,17 +356,17 @@
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(54, 164);
+            label3.Location = new Point(7, 164);
             label3.Name = "label3";
-            label3.Size = new Size(59, 21);
+            label3.Size = new Size(112, 21);
             label3.TabIndex = 24;
-            label3.Text = "Площа";
+            label3.Text = "Площа (км^2)";
             // 
             // nameBox
             // 
             nameBox.Anchor = AnchorStyles.Top;
             nameBox.Font = new Font("Segoe UI", 12F);
-            nameBox.Location = new Point(119, 115);
+            nameBox.Location = new Point(125, 115);
             nameBox.Name = "nameBox";
             nameBox.Size = new Size(157, 29);
             nameBox.TabIndex = 1;
@@ -386,7 +377,7 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(61, 115);
+            label2.Location = new Point(67, 115);
             label2.Name = "label2";
             label2.Size = new Size(52, 21);
             label2.TabIndex = 22;
@@ -397,7 +388,7 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(263, 23);
+            label1.Location = new Point(269, 23);
             label1.Name = "label1";
             label1.Size = new Size(100, 37);
             label1.TabIndex = 21;
@@ -405,8 +396,9 @@
             // 
             // label14
             // 
+            label14.Anchor = AnchorStyles.Top;
             label14.AutoSize = true;
-            label14.Location = new Point(419, 19);
+            label14.Location = new Point(425, 19);
             label14.Name = "label14";
             label14.Size = new Size(38, 15);
             label14.TabIndex = 7;
@@ -415,8 +407,9 @@
             // 
             // label13
             // 
+            label13.Anchor = AnchorStyles.Top;
             label13.AutoSize = true;
-            label13.Location = new Point(212, 19);
+            label13.Location = new Point(218, 19);
             label13.Name = "label13";
             label13.Size = new Size(44, 15);
             label13.TabIndex = 6;
@@ -425,8 +418,9 @@
             // 
             // label12
             // 
+            label12.Anchor = AnchorStyles.Top;
             label12.AutoSize = true;
-            label12.Location = new Point(5, 19);
+            label12.Location = new Point(11, 19);
             label12.Name = "label12";
             label12.Size = new Size(62, 15);
             label12.TabIndex = 5;
@@ -435,12 +429,13 @@
             // 
             // searchResultBoxCities
             // 
+            searchResultBoxCities.Anchor = AnchorStyles.Top;
             searchResultBoxCities.DataSource = cityBindingSource;
             searchResultBoxCities.DisplayMember = "Name";
             searchResultBoxCities.Font = new Font("Segoe UI", 12F);
             searchResultBoxCities.FormattingEnabled = true;
             searchResultBoxCities.ItemHeight = 21;
-            searchResultBoxCities.Location = new Point(419, 37);
+            searchResultBoxCities.Location = new Point(425, 37);
             searchResultBoxCities.Name = "searchResultBoxCities";
             searchResultBoxCities.Size = new Size(190, 151);
             searchResultBoxCities.TabIndex = 14;
@@ -453,12 +448,13 @@
             // 
             // searchResultBoxCountries
             // 
+            searchResultBoxCountries.Anchor = AnchorStyles.Top;
             searchResultBoxCountries.DataSource = countryBindingSource;
             searchResultBoxCountries.DisplayMember = "Name";
             searchResultBoxCountries.Font = new Font("Segoe UI", 12F);
             searchResultBoxCountries.FormattingEnabled = true;
             searchResultBoxCountries.ItemHeight = 21;
-            searchResultBoxCountries.Location = new Point(212, 37);
+            searchResultBoxCountries.Location = new Point(218, 37);
             searchResultBoxCountries.Name = "searchResultBoxCountries";
             searchResultBoxCountries.Size = new Size(190, 151);
             searchResultBoxCountries.TabIndex = 13;
@@ -471,12 +467,13 @@
             // 
             // searchResultBoxContinents
             // 
+            searchResultBoxContinents.Anchor = AnchorStyles.Top;
             searchResultBoxContinents.DataSource = continentBindingSource;
             searchResultBoxContinents.DisplayMember = "Name";
             searchResultBoxContinents.Font = new Font("Segoe UI", 12F);
             searchResultBoxContinents.FormattingEnabled = true;
             searchResultBoxContinents.ItemHeight = 21;
-            searchResultBoxContinents.Location = new Point(5, 37);
+            searchResultBoxContinents.Location = new Point(11, 37);
             searchResultBoxContinents.Name = "searchResultBoxContinents";
             searchResultBoxContinents.Size = new Size(190, 151);
             searchResultBoxContinents.TabIndex = 12;
@@ -511,9 +508,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(884, 561);
             Controls.Add(splitContainer1);
-            MinimumSize = new Size(840, 570);
+            MinimumSize = new Size(900, 570);
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "Довідник географа";
             FormClosing += MainForm_FormClosing;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
@@ -552,7 +549,6 @@
         private TextBox nameBox;
         private Label label2;
         private Label label1;
-        private Label label10;
         private ListBox searchResultBox;
         private Button searchButton;
         private TreeView dataView;

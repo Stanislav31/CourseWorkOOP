@@ -146,7 +146,7 @@ namespace CourseProject.Forms
             {
                 areaBoxMin.Text = "";
             }
-            if (areaMax < areaMin)
+            if (areaMax < areaMin && areaBoxMax.Text != "")
             {
                 areaBoxMin.Text = areaBoxMax.Text;
             }
@@ -160,7 +160,7 @@ namespace CourseProject.Forms
             {
                 areaBoxMax.Text = "";
             }
-            if (areaMax < areaMin)
+            if (areaMax < areaMin && areaBoxMax.Text != "")
             {
                 areaBoxMax.Text = areaBoxMin.Text;
             }
@@ -174,7 +174,7 @@ namespace CourseProject.Forms
             {
                 populationBoxMin.Text = "";
             }
-            if (populationMax < populationMin)
+            if (populationMax < populationMin && populationBoxMax.Text != "")
             {
                 populationBoxMin.Text = populationBoxMax.Text;
             }
@@ -184,13 +184,13 @@ namespace CourseProject.Forms
 
         private void populationBoxMax_Validating(object sender, CancelEventArgs e)
         {
-            bool isNumber = int.TryParse(populationBoxMax.Text, out int populationMax);
-            int.TryParse(populationBoxMin.Text, out int populationMin);
+            bool isNumber = double.TryParse(populationBoxMax.Text, out double populationMax);
+            double.TryParse(populationBoxMin.Text, out double populationMin);
             if (!isNumber || populationMax < 0)
             {
                 populationBoxMax.Text = "";
             }
-            if (populationMax < populationMin)
+            if (populationMax < populationMin && populationBoxMax.Text != "")
             {
                 populationBoxMax.Text = populationBoxMin.Text;
             }
@@ -200,7 +200,7 @@ namespace CourseProject.Forms
         {
             foreach (var c in nameBox.Text)
             {
-                if (!Char.IsLetter(c))
+                if (!Char.IsLetter(c) && c.ToString() != " ")
                 {
                     nameBox.Text = nameBox.Text.Replace(c.ToString(), "");
                 }
@@ -211,7 +211,7 @@ namespace CourseProject.Forms
         {
             foreach (var c in continentBox.Text)
             {
-                if (!Char.IsLetter(c))
+                if (!Char.IsLetter(c) && c.ToString() != " ")
                 {
                     continentBox.Text = continentBox.Text.Replace(c.ToString(), "");
                 }
@@ -229,13 +229,13 @@ namespace CourseProject.Forms
             else if (searchType.SelectedIndex == 2)
             {
                 Country country = searchResultBox.SelectedItem as Country;
-                CountryInfoForm countryInfoForm = new CountryInfoForm(country);
+                CountryInfoForm countryInfoForm = new CountryInfoForm(country, handbook, this);
                 countryInfoForm.Show();
             }
             else if (searchType.SelectedIndex == 3)
             {
                 City city = searchResultBox.SelectedItem as City;
-                CityInfoForm cityInfoForm = new CityInfoForm(city);
+                CityInfoForm cityInfoForm = new CityInfoForm(city, this);
                 cityInfoForm.Show();
             }
         }
@@ -263,7 +263,7 @@ namespace CourseProject.Forms
                 {
                     if (name == handbook.Countries[i].Name)
                     {
-                        CountryInfoForm countryInfoForm = new CountryInfoForm(handbook.Countries[i]);
+                        CountryInfoForm countryInfoForm = new CountryInfoForm(handbook.Countries[i], handbook, this);
                         countryInfoForm.Show();
                         return;
                     }
@@ -281,7 +281,7 @@ namespace CourseProject.Forms
                         {
                             if (cityName == handbook.Countries[i].Cities[j].Name)
                             {
-                                CityInfoForm cityInfoForm = new CityInfoForm(handbook.Countries[i].Cities[j]);
+                                CityInfoForm cityInfoForm = new CityInfoForm(handbook.Countries[i].Cities[j], this);
                                 cityInfoForm.Show();
                                 return;
                             }
@@ -301,14 +301,14 @@ namespace CourseProject.Forms
         private void searchResultBoxCountries_DoubleClick(object sender, EventArgs e)
         {
             Country country = searchResultBoxCountries.SelectedItem as Country;
-            CountryInfoForm countryInfoForm = new CountryInfoForm(country);
+            CountryInfoForm countryInfoForm = new CountryInfoForm(country, handbook, this);
             countryInfoForm.Show();
         }
 
         private void searchResultBoxCities_DoubleClick(object sender, EventArgs e)
         {
             City city = searchResultBoxCities.SelectedItem as City;
-            CityInfoForm cityInfoForm = new CityInfoForm(city);
+            CityInfoForm cityInfoForm = new CityInfoForm(city, this);
             cityInfoForm.Show();
         }
 
@@ -376,7 +376,7 @@ namespace CourseProject.Forms
 
         private void addCountryButton_Click(object sender, EventArgs e)
         {
-            AddCountryForm addCountryForm = new AddCountryForm(handbook, this);
+            CountryAddForm addCountryForm = new CountryAddForm(handbook, this);
             addCountryForm.Show();
         }
 

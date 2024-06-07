@@ -14,28 +14,58 @@ namespace CourseProject.Forms
 {
     public partial class CountryInfoForm : Form
     {
-        public CountryInfoForm(Country country)
+        Country Country { get; set; }
+        Handbook Handbook { get; set; }
+        MainForm MainForm { get; set; }
+        public CountryInfoForm(Country country, Handbook handbook, MainForm mainForm)
         {
             InitializeComponent();
-            this.Text = country.Name;
-            countryName.Text = country.Name;
-            descriptionTitle.Text = country.Name;
-            capital.Text = "Столиця: " + country.Capital;
-            government.Text = "Форма правління: " + country.Government;
-            language.Text = "Офіційні мови: " + country.Language;
-            population.Text = "Населення(млн осіб): " + country.Population;
-            area.Text = "Площа(км^2): " + country.Area;
-            countryCode.Text = "Коди ISO 3166: " + country.CountryCode;
-            continent.Text = "Материк: " + country.Continent.Name;
-            //timeZone.Text = "Часовий пояс: " + country.TimeZone.DisplayName[..11];
-            string desc = country.Description;
-            desc += "\n\nНайбільші міста:\n";
-            for (int i = 0; i < country.Cities.Count; i++)
+            Country = country;
+            Handbook = handbook;
+            MainForm = mainForm;
+            this.Text = "Країна " + Country.Name;
+            countryName.Text = Country.Name;
+            descriptionTitle.Text = Country.Name;
+            capital.Text = "Столиця: " + Country.Capital;
+            government.Text = "Форма правління: " + Country.Government;
+            language.Text = "Офіційні мови: " + Country.Language;
+            population.Text = "Населення(осіб): " + Country.Population;
+            area.Text = "Площа(км^2): " + Country.Area;
+            countryCode.Text = "Коди ISO 3166: " + Country.CountryCode;
+            continent.Text = "Материк: " + Country.Continent.Name;
+            string desc = Country.Description;
+            if (Country.Cities.Count > 0 )
             {
-                desc += $"{country.Cities[i].Name}, ";
-            }
-            desc = desc[..(desc.Length-2)] + ".";
+                desc += "\n\nМіста:\n";
+                for (int i = 0; i < Country.Cities.Count; i++)
+                {
+                    desc += $"{Country.Cities[i].Name}, ";
+                }
+                desc = desc[..(desc.Length - 2)] + ".";
+            }           
             countryDescription.Text = desc;
+        }
+
+        private void changeButton_Click(object sender, EventArgs e)
+        {
+            CitiesEditForm citiesEditForm = new CitiesEditForm(Country, MainForm);
+            citiesEditForm.Show();
+            this.Close();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Ви дійсно хочете видалити країну " + Country.Name, "Видалити країну",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                Handbook.DeleteCountry(Country);
+                MainForm.FillTreeData();
+                this.Close();
+            } else
+            {
+                return;
+            }
         }
     }
 }

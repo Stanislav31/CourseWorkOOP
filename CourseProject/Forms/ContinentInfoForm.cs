@@ -14,17 +14,19 @@ namespace CourseProject.Forms
 {
     public partial class ContinentInfoForm : Form
     {
+        Continent Continent { get; set; }
         public ContinentInfoForm(Continent continent)
         {
             InitializeComponent();
 
-            this.Text = continent.Name;
-            continentName.Text = continent.Name;
-            descriptionTitle.Text = continent.Name;
-            continentDescription.Text = continent.Description;
-            population.Text = "Населення(млн. осіб): " + continent.Population;
-            countryCount.Text = "Кількість країн: " + continent.Countries.Count;
-            area.Text = "Площа(км^2): " + continent.Area;
+            Continent = continent;
+            this.Text = Continent.Name;           
+            continentName.Text = Continent.Name;
+            descriptionTitle.Text = Continent.Name;
+            continentDescription.Text = Continent.Description;
+            population.Text = "Населення(осіб): " + Continent.Population;
+            countryCount.Text = "Кількість країн: " + Continent.Countries.Count;
+            area.Text = "Площа(км^2): " + Continent.Area;
         }
     }
 }

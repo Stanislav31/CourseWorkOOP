@@ -14,10 +14,9 @@ namespace CourseProject.Models
         public string Description { get; set; }
         public string Government { get; set; }
         public string Language { get; set; }
-        public int Population { get; set; }
+        public double Population { get; set; }
         public double Area { get; set; }
         public List<City> Cities { get; set; }
         public Continent Continent { get; set; }
-        //public TimeZoneInfo TimeZone { get; set; }
     }
 }

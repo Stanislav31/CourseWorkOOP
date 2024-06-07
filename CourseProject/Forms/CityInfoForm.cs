@@ -13,18 +13,38 @@ namespace CourseProject.Forms
 {
     public partial class CityInfoForm : Form
     {
-        public CityInfoForm(City city)
+        City City { get; set; }
+        MainForm MainForm { get; set; }
+        public CityInfoForm(City city, MainForm mainForm)
         {
             InitializeComponent();
 
-            this.Text = city.Name;
-            cityName.Text = city.Name;
-            descriptionTitle.Text = city.Name;
-            cityDescription.Text = city.Description;
-            population.Text = "Населення(тис. осіб): " + city.Population;
-            country.Text = city.Country.Name;
-            continent.Text = city.Country.Continent.Name;
-            coordinates.Text = "Географічні координати:\n" + "Широта:\n" + city.Coordinates[0] + "\nДовгота:\n" + city.Coordinates[1];
+            City = city;
+            MainForm = mainForm;
+            this.Text = "Місто " + City.Name;
+            cityName.Text = City.Name;
+            descriptionTitle.Text = City.Name;
+            cityDescription.Text = City.Description;
+            population.Text = "Населення(осіб): " + City.Population;
+            country.Text = "Країна: " + City.Country.Name;
+            continent.Text = "Материк: " + City.Country.Continent.Name;
+            coordinates.Text = "Географічні координати:\n" + "Широта:\n" + City.Coordinates[0].ToString() + "\nДовгота:\n" + City.Coordinates[1].ToString();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Ви дійсно хочете видалити місто " + City.Name, "Видалити місто",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                City.Country.Cities.Remove(City);
+                MainForm.FillTreeData();
+                this.Close();
+            } else
+            {
+                return;
+            }
+            
         }
     }
 }

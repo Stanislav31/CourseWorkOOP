@@ -11,7 +11,7 @@ namespace CourseProject.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public double Area { get; set; }
-        public int Population { get; set; }
+        public double Population { get; set; }
         public List<Country> Countries { get; set; }
     }
 }
